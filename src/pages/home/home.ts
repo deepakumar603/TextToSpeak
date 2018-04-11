@@ -1,4 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, ViewChild,ElementRef } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { TextToSpeech } from '@ionic-native/text-to-speech';
 import { Storage } from '@ionic/storage';
@@ -6,21 +6,25 @@ import { Storage } from '@ionic/storage';
 
 @Component({
   selector: 'page-home',
-  templateUrl: 'home.html'
+  templateUrl: 'home.html',
+  styles:['home.scss']
 })
 export class HomePage {
 
   textToSpeak: string;
   @ViewChild('input') myInput;
 
-  constructor(public navCtrl: NavController, private tts: TextToSpeech, private storage: Storage) {
-
+  constructor(public navCtrl: NavController, private tts: TextToSpeech,private element:ElementRef, private storage: Storage) {
+    this.element = element;
   }
 
   ionViewLoaded() {
     setTimeout(() => {
       this.myInput.setFocus();
     }, 150);
+  }
+  ngAfterViewInit(){
+    this.element.nativeElement.querySelector("textarea").style.height = "100%";
   }
   speakText() {
     this.myInput.setFocus();

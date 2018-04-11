@@ -1,6 +1,16 @@
-#header{    
-  background: #005aa7; /* fallback for old browsers */
-  background: -webkit-linear-gradient(to bottom, #005aa7, #fffde4) !important; /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to bottom, #005aa7, #fffde4) !important; /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+#header{   
+  .toolbar-background{
+    background: #005aa7; /* fallback for old browsers */
+    background: -webkit-linear-gradient(to bottom, #005aa7, #fffde4); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to bottom, #005aa7, #fffde4); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  } 
+  button{
+    color: #fff;
+  }
+  .titles{
+    color: #fff;
+  }
 }
-
+textarea {
+  resize: both;
+}

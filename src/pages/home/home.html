@@ -3,7 +3,7 @@
     <ion-title>      
       <ion-grid>
         <ion-row>
-          <ion-col col-8>Voice Tool</ion-col>
+          <ion-col col-8 class="titles">Voice Tool</ion-col>
           <ion-col col-2><button ion-button (click)="getText()"><ion-icon ios="ios-archive" md="md-archive"></ion-icon></button></ion-col>
           <ion-col col-2><button ion-button (click)="saveText()"><ion-icon ios="ios-print" md="md-print"></ion-icon></button></ion-col>
         </ion-row>
@@ -12,11 +12,11 @@
   </ion-navbar>
 </ion-header>
 
-<ion-content (click)=makeFocus()>
+<ion-content (click)="makeFocus()">
   <ion-grid>
     <ion-row>
       <ion-col col-12>
-        <ion-textarea rows="6" id="input" #input placeholder="Enter text you want to speak" [(ngModel)]="textToSpeak"></ion-textarea>
+        <ion-textarea id="input" #input placeholder="Enter text you want to speak" [(ngModel)]="textToSpeak"></ion-textarea>
       </ion-col>
     </ion-row>
 
