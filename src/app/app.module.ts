@@ -8,11 +8,13 @@ import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { TextToSpeech } from '@ionic-native/text-to-speech';
 import { IonicStorageModule } from '@ionic/storage';
+import { SavedVoices } from '../pages/savedvoices/savedvoices';
 
 @NgModule({
   declarations: [
     MyApp,
-    HomePage
+    HomePage,
+    SavedVoices
   ],
   imports: [
     BrowserModule,
@@ -22,7 +24,8 @@ import { IonicStorageModule } from '@ionic/storage';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage
+    HomePage,
+    SavedVoices
   ],
   providers: [
     TextToSpeech,

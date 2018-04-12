@@ -2,7 +2,7 @@ import { Component, ViewChild,ElementRef } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { TextToSpeech } from '@ionic-native/text-to-speech';
 import { Storage } from '@ionic/storage';
-
+import { SavedVoices } from '../savedvoices/savedvoices';
 
 @Component({
   selector: 'page-home',
@@ -12,10 +12,12 @@ import { Storage } from '@ionic/storage';
 export class HomePage {
 
   textToSpeak: string;
+  textToSpeakList=new Array();
   @ViewChild('input') myInput;
 
   constructor(public navCtrl: NavController, private tts: TextToSpeech,private element:ElementRef, private storage: Storage) {
     this.element = element;
+    console.log(screen.availHeight);
   }
 
   ionViewLoaded() {
@@ -24,7 +26,10 @@ export class HomePage {
     }, 150);
   }
   ngAfterViewInit(){
-    this.element.nativeElement.querySelector("textarea").style.height = "100%";
+    this.element.nativeElement.querySelector("textarea").style.height = document.getElementsByClassName('myDiv').length+"px";
+  }
+  ngOninit(){
+    this.textToSpeak="";
   }
   speakText() {
     this.myInput.setFocus();
@@ -41,13 +46,12 @@ export class HomePage {
     this.myInput.setFocus();
   }
   saveText() {
-    if (this.textToSpeak != "" || this.textToSpeak != null) {
-      this.storage.set('textForSpeaking', this.textToSpeak);
+    if (this.textToSpeak != undefined && this.textToSpeak != "" && this.textToSpeak != null) {
+      this.textToSpeakList.push(this.textToSpeak);
+      this.storage.set('textForSpeaking', this.textToSpeakList);
     }
   }
   getText() {
-    this.storage.get('textForSpeaking').then((val) => {
-      console.log('Textis--->', val);
-    });
+    this.navCtrl.push(SavedVoices);
   }
 }

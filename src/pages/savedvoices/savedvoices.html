@@ -1,0 +1,20 @@
+<ion-header id="header">
+    <ion-navbar>
+      <ion-title>      
+        <ion-grid>
+          <ion-row>
+            <ion-col col-8 class="titles">Saved Voices</ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-title>    
+    </ion-navbar>
+  </ion-header>
+
+  <ion-content>
+    <ion-card *ngFor="let voice of savedVoices" (tap)="tapEvent(voice)">
+        <ion-item>
+          {{voice}}
+        </ion-item>
+      </ion-card>
+  </ion-content>
+  
